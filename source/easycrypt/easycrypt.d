@@ -80,7 +80,7 @@ class EasyCrypt{
 
       foreach(pr; keyData)
         foreach(ref e; data)
-        e ^= pr;
+          e ^= pr;
     }
 
     string[] keyGen(){
@@ -100,11 +100,11 @@ class EasyCrypt{
 
     ubyte[] loadKeyFile(string keyFilePath){
       return File(keyFilePath, "r").byLine
-        .map!chomp
-        .join
-        .split(",")
-        .map!(e => e.removechars(" "))
-        .map!(e => cast(ubyte)e.to!ulong).array;
+              .map!chomp
+              .join
+              .split(",")
+              .map!(e => e.removechars(" "))
+              .map!(e => cast(ubyte)e.to!ulong).array;
     }
 
     void writeFile(string fileName, string text, string mode = "d"){
